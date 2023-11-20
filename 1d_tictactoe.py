@@ -11,7 +11,7 @@ def check_winner(board, player):
             return True
     return False
 
-def OneD_tictactoe():
+def tictactoe():
     board = ["-"] * 20
     player = "X"
 
@@ -51,4 +51,4 @@ def OneD_tictactoe():
     else:
         print("It's a draw!")
 
-OneD_tictactoe()
+tictactoe()
