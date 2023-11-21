@@ -5,15 +5,15 @@ from random import randrange
 def print_board(board):
     print("".join(board))
 
-def check_winner(board, player):
+def check_winner(board, mark):
     for i in range(len(board) - 2):
-        if board[i:i+3] == [player] * 3:
+        if board[i:i+3] == [mark] * 3:
             return True
     return False
 
 def tictactoe():
     board = ["-"] * 20
-    player = "X"
+    mark = "X" or "O"
 
     print("This is the game board:")
     print_board(board)
@@ -21,19 +21,19 @@ def tictactoe():
     for play in range(20):  
         try:
             player_move = int(input("Please enter your move (1-20): ")) - 1
-            if player_move not in range(0, 20):
+            if player_move not in range(21):
                 print("That is not a valid number. Try again.")
             elif board[player_move] == "-":
-                board[player_move] = player
+                board[player_move] = mark
                 print_board(board)
 
-                if check_winner(board, player):
-                    print(f"Player {player} wins!")
+                if check_winner(board, mark):
+                    print(f"Player {mark} wins!")
                     break
 
-                pc_move = randrange(0, 19)
+                pc_move = randrange(21)
                 while board[pc_move] != "-":
-                    pc_move = randrange(0, 19)
+                    pc_move = randrange(21)
 
                 board[pc_move] = "O"
                 print(f"Computer chose {pc_move + 1}")
